@@ -1,0 +1,12 @@
+{
+    "name": "To-Do-App-v2",
+    "version": "1.0.0",
+    "description": "A super awesome CRUD app with json-server",
+    "main": "index.html",
+    "scripts": {
+        "start": "json-server --watch db.json"
+    },
+    "dependencies": {
+        "json-server": "^0.17.0"
+    }
+}

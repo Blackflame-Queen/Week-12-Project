@@ -1,0 +1,189 @@
+body {
+    background: url('images/corkboard.png') repeat;
+    min-height: 100vh;
+}
+
+.sticky-note {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    background-size: cover;
+    transition: background-image 0.5s ease, transform 0.3s ease;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+    transform: rotate(-2deg);
+}
+
+.sticky-note::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 20px;
+    background: url('images/pin.png') no-repeat center;
+    background-size: contain;
+    z-index: 15;
+}
+
+.sticky-note:nth-child(even) {
+    transform: rotate(2deg);
+}
+
+.sticky-note:hover {
+    transform: rotate(0deg) scale(1.05);
+    box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.color-1 { background-image: url('images/color-1.png'); }
+.color-2 { background-image: url('images/color-2.png'); }
+.color-3 { background-image: url('images/color-3.png'); }
+
+#form-container {
+    border: 3px dashed #ff6f61;
+    background-size: cover;
+    box-shadow: 0 0 20px rgba(255, 107, 97, 0.5);
+}
+
+.note-content {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+    font-family: 'Caveat', cursive;
+    font-size: 20px;
+    color: #333;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#form-container .note-content {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.note-content textarea, .note-content input {
+    font-family: 'Caveat', cursive;
+    font-size: 20px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+#form-container .btn {
+    background-color: #ff6f61;
+    border: none;
+    font-family: 'Caveat', cursive;
+    font-size: 24px;
+    transition: background-color 0.3s ease;
+}
+
+#form-container .btn:hover {
+    background-color: #ff3d2e;
+}
+
+.note-content p {
+    margin: 5px 0;
+    word-wrap: break-word;
+}
+
+.note-content .buttons {
+    position: relative;
+    z-index: 10;
+}
+
+.note-content .buttons .btn {
+    font-size: 14px;
+    padding: 2px 8px;
+    border-radius: 50%;
+    transition: transform 0.2s ease;
+}
+
+.note-content .buttons .btn-success {
+    background-color: #28a745;
+}
+
+.note-content .buttons .btn-success:hover {
+    background-color: #218838;
+    transform: scale(1.2);
+}
+
+.note-content .buttons .btn-danger {
+    background-color: #dc3545;
+}
+
+.note-content .buttons .btn-danger:hover {
+    background-color: #c82333;
+    transform: scale(1.2);
+}
+
+.completed-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('images/checkmark.png') no-repeat center;
+    background-size: 50%;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.completed-overlay.visible {
+    opacity: 1;
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+.fade-out {
+    animation: fadeOut 0.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+#sort-notes {
+    font-family: 'Caveat', cursive;
+    font-size: 20px;
+    background-color: #fff;
+    border: 2px solid #8b4513;
+    color: #8b4513;
+    padding: 5px 20px;
+    margin: 20px;
+    border-radius: 5px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+#sort-notes:focus {
+    outline: none;
+    border-color: #ff6f61;
+}
+
+@media (max-width: 767px) {
+    #board .sticky-note {
+        margin: 0 auto 20px auto;
+    }
+}
+
+@media (min-width: 768px) {
+    #board {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    #form-container,
+    #board .sticky-note {
+        flex: 0 0 250px;
+    }
+}

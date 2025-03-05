@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         tasks.forEach(task => addStickyNote(task));
     }
 
-// this posts a new task to the server
+// these three functions post, patch, and delete a new task to/from the server
     async function createTask(task) {
         await fetch('http://localhost:3000/tasks', {
             method: 'POST',
@@ -52,7 +52,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     }
 
-// this updates a task’s info on the server
     async function updateTask(id, updates) {
         await fetch(`http://localhost:3000/tasks/${id}`, {
             method: 'PATCH',
@@ -61,7 +60,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     }
 
-// this removes a task from the server
     async function deleteTask(id) {
         await fetch(`http://localhost:3000/tasks/${id}`, {
             method: 'DELETE'
